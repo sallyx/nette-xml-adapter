@@ -1,0 +1,26 @@
+{
+	"name": "sallyx/nette-xml-adapter",
+	"description": "XML adapter for Nette Dependency Injection Component",
+	"homepage": "http://github.org/sallyx/nette-xml-adapter",
+	"license": ["MIT"],
+	"authors": [
+		{
+			"name": "Petr Bilek",
+			"homepage": "http://www.sallyx.org"
+		}
+	],
+	"require": {
+		"php": ">=5.4.4",
+		"nette/di": "~2.3"
+	},
+	"require-dev": {
+		"nette/tester": "~1.4"
+	},
+	"conflict": {
+		"nette/nette": "<2.2"
+	},
+	"autoload": {
+		"classmap": ["src/"]
+	},
+	"minimum-stability": "dev"
+}

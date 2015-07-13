@@ -5,11 +5,12 @@
  * Copyright (c) 2015 Petr Bilek (http://ww.sallyx.org)
  */
 
-namespace Nette\DI\Config\Adapters;
+namespace Sallyx\Nette\Adapters;
 
 use Nette;
 use Nette\DI\Config\Helpers;
 use Nette\DI\Statement;
+use Nette\DI\Config\Adapters\NeonAdapter;
 
 /**
  * Reading and generating XML files.
@@ -17,7 +18,7 @@ use Nette\DI\Statement;
 class XmlAdapter extends Nette\Object implements Nette\DI\Config\IAdapter
 {
 
-	const NS = "http://www.nette.org/xmlns/nette/config/1.0";
+	const NS = "http://www.sallyx.org/xmlns/nette/config/1.0";
 
 	/**
 	 * Reads configuration from XML file.
@@ -27,7 +28,7 @@ class XmlAdapter extends Nette\Object implements Nette\DI\Config\IAdapter
 	public function load($file)
 	{
 		$options = LIBXML_NOBLANKS | LIBXML_NOCDATA | LIBXML_NOENT | LIBXML_NSCLEAN; // | LIBXML_PEDANTIC ?
-		$parserClass = "\\Nette\\DI\\Config\\Adapters\\XMLElementParser";
+		$parserClass = "\\Sallyx\\Nette\\Adapters\\XMLElementParser";
 		$document = simplexml_load_file($file, $parserClass, $options, self::NS);
 		return $document->parse();
 	}

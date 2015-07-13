@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/nette/neon.svg?branch=master)](https://travis-ci.org/nette/neon)
 
 XML adapter could be used to write configuration in XML.
-Thanks to namespace usage (http://www.nette.org/xmlns/nette/config/1.0) you can have
+Thanks to namespace usage (http://www.sallyx.org/xmlns/nette/config/1.0) you can have
 configuration common for nette and other application, configuration for nette  only
 and  for other application only in the same file.
 

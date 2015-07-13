@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<config xmlns:nc="http://www.nette.org/xmlns/nette/config/1.0" xmlns="http://www.nette.org/xmlns/nette/config/1.0" array="numeric">
+<config xmlns:nc="http://www.sallyx.org/xmlns/nette/config/1.0" xmlns="http://www.sallyx.org/xmlns/nette/config/1.0" array="numeric">
 <service statement="Class(arg1, Class2(arg2, arg3))" />
 <service statement="statement">
 	<s>

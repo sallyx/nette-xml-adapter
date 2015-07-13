@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Test: Nette\DI\Config\Adapters\XmlAdapter
+ * Test: Sallyx\Nette\DI\Config\Adapters\XmlAdapter
  */
 
-use Nette\DI\Config\Adapters\XmlAdapter;
+use Sallyx\Nette\DI\Config\Adapters\XmlAdapter;
 use Nette\DI\Statement;
 use Tester\Assert;
 

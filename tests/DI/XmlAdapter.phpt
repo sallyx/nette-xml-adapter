@@ -18,41 +18,41 @@ $config = new Config\Loader;
 $config->addAdapter('xml','Nette\DI\Config\Adapters\XmlAdapter');
 
 $data = $config->load('files/xmlAdapter.xml', 'production');
-Assert::same([
+Assert::same(array(
 	'webname' => 'the example',
-	'database' => [
+	'database' => array(
 		'adapter' => 'pdo_mysql',
-		'params' => [
+		'params' => array(
 			'host' => 'db.example.com',
 			'username' => 'dbuser',
 			'password' => 'secret ',
 			'dbname' => 'dbname',
-		],
-	],
-], $data);
+		),
+	),
+), $data);
 
 
 $data = $config->load('files/xmlAdapter.xml', 'development');
-Assert::same([
+Assert::same(array(
 	'webname' => 'the example',
-	'database' => [
+	'database' => array(
 		'adapter' => 'pdo_mysql',
-		'params' => [
+		'params' => array(
 			'host' => 'dev.example.com',
 			'username' => 'devuser',
 			'password' => 'devsecret',
 			'dbname' => 'dbname',
-		],
-	],
+		),
+	),
 	'timeout' => 10,
 	'display_errors' => TRUE,
 	'html_errors' => FALSE,
-	'items' => [10, 20],
-	'php' => [
+	'items' => array(10, 20),
+	'php' => array(
 		'zlib.output_compression' => TRUE,
 		'date.timezone' => 'Europe/Prague',
-	],
-], $data);
+	),
+), $data);
 
 
 $config->save($data, TEMP_FILE);
@@ -66,29 +66,29 @@ EOD
 $data = $config->load('files/xmlAdapter.xml');
 $config->save($data, TEMP_FILE);
 $actual = file_get_contents(TEMP_FILE);
-$actual = preg_replace('/\<(\w+)\s*\/\s*\>/i', '<$1></$1>', $actual);
+$actual = preg_replace('/\<([^\s\/>]+)(\s*[^\/>]*)\/\s*\>/i', '<$1$2></$1>', $actual);
 Assert::match(<<<EOD
 <?xml version="1.0"?>
-<config xmlns:nc="http://www.nette.org/xmlns/nette/config/1.0" xmlns="http://www.nette.org/xmlns/nette/config/1.0"><production><webname>the example</webname><database><adapter>pdo_mysql</adapter><params><host>db.example.com</host><username>dbuser</username><password>secret </password><dbname>dbname</dbname></params></database></production><development extends="production"><database><params><host>dev.example.com</host><username>devuser</username><password>devsecret</password></params></database><timeout number="10"/><display_errors bool="1"/><html_errors bool="0"/><items array="numeric"><item number="10"/><item number="20"/></items><php><zlib.output_compression bool="1"/><date.timezone>Europe/Prague</date.timezone></php></development><nothing></nothing></config>
+<config xmlns:nc="http://www.nette.org/xmlns/nette/config/1.0" xmlns="http://www.nette.org/xmlns/nette/config/1.0"><production><webname>the example</webname><database><adapter>pdo_mysql</adapter><params><host>db.example.com</host><username>dbuser</username><password>secret </password><dbname>dbname</dbname></params></database></production><development extends="production"><database><params><host>dev.example.com</host><username>devuser</username><password>devsecret</password></params></database><timeout number="10"></timeout><display_errors bool="1"></display_errors><html_errors bool="0"></html_errors><items array="numeric"><item number="10"></item><item number="20"></item></items><php><zlib.output_compression bool="1"></zlib.output_compression><date.timezone>Europe/Prague</date.timezone></php></development><nothing></nothing></config>
 EOD
 , $actual);
 
 $data = $config->load('files/xmlAdapter.entity.xml');
-Assert::equal([
-	new Statement('ent', [1]),
-	new Statement([
-			new Statement('ent', [2]),
+Assert::equal(array(
+	new Statement('ent', array(1)),
+	new Statement(array(
+			new Statement('ent', array(2)),
 			'inner',
-		],
-		['3', '4']
+		),
+		array('3', '4')
 	),
-	new Statement([
-			new Statement('ent', ['3']),
+	new Statement(array(
+			new Statement('ent', array('3')),
 			'inner',
-		],
-		['5','6']
+		),
+		array('5','6')
 	),
-], $data);
+), $data);
 
 $data = $config->load('files/xmlAdapter.entity.xml');
 $config->save($data, TEMP_FILE);

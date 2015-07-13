@@ -16,15 +16,15 @@ $adapter = new XmlAdapter;
 $data = $adapter->load('files/xmlAdapter.services.xml');
 
 Assert::equal(
-	[
-		new Statement('Class', [
+	array(
+		new Statement('Class', array(
 			'arg1',
-			new Nette\DI\Statement('Class2', ['arg2', 'arg3']),
-		]),
-		new Statement('Class', [
+			new Nette\DI\Statement('Class2', array('arg2', 'arg3')),
+		)),
+		new Statement('Class', array(
 			'arg1',
-			new Nette\DI\Statement('Class2', ['arg2', 'arg3']),
-		]),
-	],
+			new Nette\DI\Statement('Class2', array('arg2', 'arg3')),
+		)),
+	),
 	$data
 );

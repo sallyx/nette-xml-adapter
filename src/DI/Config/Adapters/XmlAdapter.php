@@ -183,7 +183,7 @@ class XMLElementParser extends \SimpleXMLElement
 			if (!$res) {
 				$res = new Statement($entity, $arguments);
 			} else {
-				$res = new Statement([$res, $entity], $arguments);
+				$res = new Statement(array($res, $entity), $arguments);
 			}
 		}
 
@@ -208,7 +208,7 @@ class XMLElementParser extends \SimpleXMLElement
 
 		$argsElement = $child->args;
 		if (empty($argsElement)) {
-			return [$entity, NULL];
+			return array($entity, NULL);
 		}
 		$arrayAttr = $argsElement[0]->getAttribute(self::ATTR_ARRAY);
 		if (is_null($arrayAttr)) {
@@ -217,9 +217,9 @@ class XMLElementParser extends \SimpleXMLElement
 
 		$attributes = $argsElement[0]->parseChildren();
 		if (!is_array($attributes)) {
-			$attributes = [$attributes];
+			$attributes = array($attributes);
 		}
-		return [$entity, $attributes];
+		return array($entity, $attributes);
 	}
 
 	/**
@@ -247,7 +247,7 @@ class XMLElementParser extends \SimpleXMLElement
 			return $res;
 		}
 
-		$res = [];
+		$res = array();
 		switch ($arrayType) {
 			default:
 			case self::ATTR_ARRAY_ASSOCIATIVE:
@@ -306,7 +306,7 @@ class XMLElementParser extends \SimpleXMLElement
 
 		$value = $this->getValue();
 		if (is_null($value)) {
-			return [];
+			return array();
 		}
 
 		$delimiter = $this->getAttribute(self::ATTR_DELIMITER, self::DEFAULT_DELIMITER);

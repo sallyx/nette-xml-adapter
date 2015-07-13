@@ -1,10 +1,13 @@
 language: php
 php:
+    - 5.3
     - 5.4
     - 5.5
     - 5.6
     - 7.0
     - hhvm
+
+env: dependencies="--prefer-stable"
 
 matrix:
     allow_failures:
@@ -17,7 +20,7 @@ matrix:
 
 script:
     - vendor/bin/tester tests -s -p php -c tests/php-unix.ini
-    - php temp/code-checker/src/code-checker.php --short-arrays
+    - php temp/code-checker/src/code-checker.php
 
 after_failure:
     # Print *.actual content

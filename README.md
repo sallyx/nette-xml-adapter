@@ -4,8 +4,10 @@
 
 XML adapter could be used to write configuration in XML.
 Thanks to namespace usage (http://www.sallyx.org/xmlns/nette/config/1.0) you can have
-configuration common for nette and other application, configuration for nette  only
-and  for other application only in the same file.
+configuration common for your php application (nette) and other application
+in the same xml file.
+
+XmlAdapter reads xml file and convert it to PHP array.
 
 For basic usage example: see [tests/DI/files/xmlAdapter.xml](tests/DI/files/xmlAdapter.xml)
 
@@ -89,11 +91,47 @@ You can use neon syntax for statement:
 <xxx statement="DateTime(0)::format('%B')" />
 ```
 
-## Example of converting neon config file to xml config file
+#Usage
+
+## Install with composer
+
+```
+composer require sallyx/nette-xml-adapter
+```
+
+## Test
+
+```php
+require 'vendor/autoload.php';
+use Sallyx\Nette\DI\Config\Adapter\XmlAdapter;
+
+$adapter = new XmlAdapter;
+$file = 'vendor/sallyx/nette-xml-adapter/tests/DI/files/xmlAdapter.xml';
+$config = $adapter->load($file);
+print_r($config);
+```
+
+## Usage with Nette
+
+Add this line into your app/bootstrap.php after ```$configurator = new Nette\Configurator;```
+
+```
+$xmlAdapter = new Sallyx\Nette\DI\Config\Adapters\XmlAdapter;
+$configurator->addAdapter('xml', $xmlAdapter);
+```
+
+And now you can load XML configuration files (alongside with neon files). 
+For example:
+
+```
+$configurator->addConfig(__DIR__ . '/config/config.xml', Nette\Config\Configurator::AUTO);
+```
+
+### How to convert neon config file to xml config file
 
 ```php
 use Nette\DI\Config\Adapters\NeonAdapter;
-use Nette\DI\Config\Adapters\XmlAdapter;
+use Sallyx\Nette\DI\Config\Adapters\XmlAdapter;
 
 $na = NeonAdapter;
 $xa = XmlAdapter;

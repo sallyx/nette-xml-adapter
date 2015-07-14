@@ -9,7 +9,7 @@ in the same xml file.
 
 XmlAdapter reads xml file and convert it to PHP array.
 
-For basic usage example: see [tests/DI/files/xmlAdapter.xml](tests/DI/files/xmlAdapter.xml)
+See xml example here: [tests/Adapters/files/xmlAdapter.xml](tests/Adapters/files/xmlAdapter.xml)
 
 ## Supported types
 
@@ -103,10 +103,10 @@ composer require sallyx/nette-xml-adapter
 
 ```php
 require 'vendor/autoload.php';
-use Sallyx\Nette\DI\Config\Adapter\XmlAdapter;
+use Sallyx\Nette\DI\Config\Adapters\XmlAdapter;
 
 $adapter = new XmlAdapter;
-$file = 'vendor/sallyx/nette-xml-adapter/tests/DI/files/xmlAdapter.xml';
+$file = 'vendor/sallyx/nette-xml-adapter/tests/Adapters/files/xmlAdapter.xml';
 $config = $adapter->load($file);
 print_r($config);
 ```
@@ -120,7 +120,7 @@ $xmlAdapter = new Sallyx\Nette\DI\Config\Adapters\XmlAdapter;
 $configurator->addAdapter('xml', $xmlAdapter);
 ```
 
-And now you can load XML configuration files (alongside with neon files). 
+And now you can load XML configuration files (alongside with neon files).
 For example:
 
 ```

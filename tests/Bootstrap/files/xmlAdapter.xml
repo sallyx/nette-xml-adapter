@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:nc="http://www.sallyx.org/xmlns/nette/config/1.0" xmlns="http://www.sallyx.org/xmlns/nette/config/1.0">
+    <production>
+        <parameters>
+            <webmasterEmail>petr@example.org</webmasterEmail>
+        </parameters>
+    </production>
+    <!-- inherits from production and overrides values as necessary -->
+    <development extends="production">
+        <parameters>
+            <webmasterEmail>petr@localhost</webmasterEmail>
+        </parameters>
+    </development>
+</config>

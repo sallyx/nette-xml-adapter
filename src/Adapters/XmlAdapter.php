@@ -1,7 +1,6 @@
 <?php
 
 /**
- * This file is part of the Nette Framework (http://nette.org)
  * Copyright (c) 2015 Petr Bilek (http://ww.sallyx.org)
  */
 

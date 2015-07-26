@@ -4,7 +4,7 @@
  * Copyright (c) 2015 Petr Bilek (http://ww.sallyx.org)
  */
 
-namespace Sallyx\Nette\Adapters;
+namespace Sallyx\Nette\DI\Config\Adapters;
 
 use Nette;
 use Nette\DI\Config\Helpers;
@@ -27,7 +27,7 @@ class XmlAdapter extends Nette\Object implements Nette\DI\Config\IAdapter
 	public function load($file)
 	{
 		$options = LIBXML_NOBLANKS | LIBXML_NOCDATA | LIBXML_NOENT | LIBXML_NSCLEAN; // | LIBXML_PEDANTIC ?
-		$parserClass = "\\Sallyx\\Nette\\Adapters\\XMLElementParser";
+		$parserClass = "\\Sallyx\\Nette\\DI\\Config\\Adapters\\XMLElementParser";
 		$document = simplexml_load_file($file, $parserClass, $options, self::NS);
 		return $document->parse();
 	}

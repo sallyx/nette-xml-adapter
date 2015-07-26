@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Test: Sallyx\Nette\Adapters\XmlAdapter errors.
+ * Test: Sallyx\Nette\DI\Config\Adapters\XmlAdapter errors.
  */
 
 use Nette\DI\Config;
@@ -10,7 +10,7 @@ use Tester\Assert;
 require __DIR__ . '/../bootstrap.php';
 
 $config = new Config\Loader;
-$config->addAdapter('xml', 'Sallyx\Nette\Adapters\XmlAdapter');
+$config->addAdapter('xml', 'Sallyx\\Nette\\DI\\Config\\Adapters\\XmlAdapter');
 
 Assert::exception(function () use ($config) {
 	$config->load('files/xmlAdapter.error1.xml');

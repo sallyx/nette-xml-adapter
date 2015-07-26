@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Test: Sallyx\Nette\Adapters\XmlAdapter
+ * Test: Sallyx\Nette\DI\Config\Adapters\XmlAdapter
  */
 
 use Nette\DI\Config;
@@ -15,7 +15,7 @@ define('TEMP_FILE', TEMP_DIR . '/cfg.xml');
 
 
 $config = new Config\Loader;
-$config->addAdapter('xml','Sallyx\Nette\Adapters\XmlAdapter');
+$config->addAdapter('xml','Sallyx\Nette\DI\Config\Adapters\XmlAdapter');
 
 $data = $config->load('files/xmlAdapter.xml', 'production');
 Assert::same(array(

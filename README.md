@@ -1,6 +1,6 @@
 # Xml Adapter
 
-[![Build Status](https://travis-ci.org/nette/neon.svg?branch=master)](https://travis-ci.org/nette/neon)
+[![Build Status](https://travis-ci.org/sallyx/nette-xml-adapter.svg?branch=master)](https://travis-ci.org/sallyx/nette-xml-adapter)
 
 XML adapter could be used to write configuration in XML.
 Thanks to namespace usage (http://www.sallyx.org/xmlns/nette/config/1.0) you can have

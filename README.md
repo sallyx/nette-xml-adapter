@@ -73,7 +73,7 @@ Becomes:
 ```
 
 ### Statement
-Of course you can use array from string in statement arguments.
+Of course you can use `array from string` as statement arguments.
 ```xml
 <xxx statement="statement">
 <s><ent>fooo</ent><args array="string" delimiter=";">1;2;3</args></s>

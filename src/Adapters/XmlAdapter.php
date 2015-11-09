@@ -123,11 +123,11 @@ class XMLElementParser extends \SimpleXMLElement
 		if ($bool) {
 			switch (strtolower($bool)) {
 				case 'yes':
-// break intentionally omitted
+				// break intentionally omitted
 				case 'true':
-// break intentionally omitted
+				// break intentionally omitted
 				case 'on':
-// break intentionally omitted
+				// break intentionally omitted
 				case '1':
 					return TRUE;
 				default:
@@ -283,8 +283,7 @@ class XMLElementParser extends \SimpleXMLElement
 				if (is_string($val)) {
 					$val = trim($val);
 				}
-			}
-			);
+			});
 			return;
 		}
 
@@ -321,6 +320,7 @@ class XMLElementParser extends \SimpleXMLElement
  */
 class XMLElementWriter extends \SimpleXMLElement
 {
+
 	/** Entity names */
 	const ENT_ITEM = 'item',
 		ENT_STATEMENT = 's',

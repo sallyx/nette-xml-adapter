@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:nc="http://www.sallyx.org/xmlns/nette/config/1.0" xmlns="http://www.sallyx.org/xmlns/nette/config/1.0">
+<production>
+	<webname>the example</webname>
+        <extensions>
+	    	<redis>Kdyby\Redis\DI\RedisExtension</redis>
+                <streamWrappers>Sallyx\Bridges\StreamWrappers\Nette\DI\StreamWrappersExtension</streamWrappers>
+        </extensions>
+        <redis>
+	    <journal bool="true" />
+	    <storage bool="true" />
+	    <session><native bool="false" /><debugger bool="true" /></session>
+        </redis>
+</production>
+</config>

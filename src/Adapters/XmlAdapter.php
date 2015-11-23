@@ -212,7 +212,11 @@ class XMLElementParser extends \SimpleXMLElement
 		}
 		$arrayAttr = $argsElement[0]->getAttribute(self::ATTR_ARRAY);
 		if (is_null($arrayAttr)) {
-			$argsElement[0]->addAttribute(self::ATTR_ARRAY, self::ATTR_ARRAY_NUMERIC);
+			if($argsElement[0]->count()) {
+				$argsElement[0]->addAttribute(self::ATTR_ARRAY, self::ATTR_ARRAY_NUMERIC);
+			} else {
+				$argsElement[0]->addAttribute(self::ATTR_ARRAY, self::ATTR_ARRAY_STRING);
+			}
 		}
 
 		$attributes = $argsElement[0]->parseChildren();
@@ -229,7 +233,7 @@ class XMLElementParser extends \SimpleXMLElement
 	 */
 	private function parseChildren()
 	{
-		$arrayType = $this->getAttribute(self::ATTR_ARRAY, self::ATTR_ARRAY_ASSOCIATIVE);
+		$arrayType = $this->getAttribute(self::ATTR_ARRAY);
 		$space = (string) $this->getAttribute(self::ATTR_SPACE);
 		if ($space !== self::ATTR_SPACE_PRESERVE and ! empty($space)) {
 			throw new Nette\InvalidStateException("Attribute " . self::ATTR_SPACE . " has an unknown value '$space'");
@@ -241,7 +245,11 @@ class XMLElementParser extends \SimpleXMLElement
 			return $res;
 		}
 
-		if (!$this->count()) {
+		if ($arrayType === NULL && $this->count()) {
+			$arrayType = self::ATTR_ARRAY_ASSOCIATIVE;
+		}
+
+		if ($arrayType === NULL) {
 			$res = $this->getValue();
 			$this->trim($res, $space);
 			return $res;

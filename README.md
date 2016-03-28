@@ -130,13 +130,14 @@ $configurator->addConfig(__DIR__ . '/config/config.xml', Nette\Config\Configurat
 ### How to convert neon config file to xml config file
 
 ```php
+require __DIR__ . '/vendor/autoload.php';
 use Nette\DI\Config\Adapters\NeonAdapter;
 use Sallyx\Nette\DI\Config\Adapters\XmlAdapter;
 
-$na = NeonAdapter;
-$xa = XmlAdapter;
+$na = new NeonAdapter;
+$xa = new XmlAdapter;
 $config = $na->load('config.neon');
-$xmlConfig = $xmlloader->dump($config);
+$xmlConfig = $xa->dump($config);
 // pretty output
 $domxml = new DOMDocument('1.0');
 $domxml->preserveWhiteSpace = false;

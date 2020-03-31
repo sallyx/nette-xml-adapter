@@ -10,8 +10,8 @@ matrix:
         - php: hhvm
 
     include:
-        - php: 7.1
-          env: dependencies="--prefer-lowest --prefer-stable"
+        - php: 7.2
+          env: dependencies="--prefer-lowest"
 
 script:
     - vendor/bin/tester tests -s -p php -c tests/php-unix.ini

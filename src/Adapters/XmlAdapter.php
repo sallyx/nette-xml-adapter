@@ -14,8 +14,9 @@ use Nette\DI\Config\Adapters\NeonAdapter;
 /**
  * Reading and generating XML files.
  */
-class XmlAdapter extends Nette\Object implements Nette\DI\Config\IAdapter
+class XmlAdapter implements Nette\DI\Config\IAdapter
 {
+	use \Nette\SmartObject;
 
 	const NS = "http://www.sallyx.org/xmlns/nette/config/1.0";
 
